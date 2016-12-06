@@ -24,7 +24,9 @@ end
 
 def print(names)
   names.each_with_index do |student, index|
-    puts "#{index+1}. #{student[:name]} (#{student[:cohort]} cohort)"
+    line = "#{index+1}. #{student[:name]} (#{student[:cohort]} cohort)"
+    # only prints names starting wtih "a"
+    puts line if student[:name][0].downcase == "a"
   end
 end
 
