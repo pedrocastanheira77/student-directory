@@ -57,7 +57,6 @@ def input_students
     # add the student hash to the array
     break if student.empty?
     students << {name: student[0], cohort: student[1].to_sym}
-    p students
     puts "Now we have #{students.count} students"
     # get another name from the user
     student = insertion
