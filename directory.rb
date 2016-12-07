@@ -5,18 +5,13 @@ def input_students
   students = []
   # get the first name
   name = gets.chomp
-  age = gets.chomp
-  city_of_birth = gets.chomp
   # while the name is not empty, repeat this code
-  while true
+  while !name.empty? do
     # add the student hash to the array
-    students << {name: name, cohort: :november, age: age, city_of_birth: city_of_birth}
+    students << {name: name, cohort: :november}
     puts "Now we have #{students.count} students"
     # get another name from the user
     name = gets.chomp
-    break if name.empty?
-    age = gets.chomp
-    city_of_birth = gets.chomp
   end
   #return the array of students
   students
@@ -25,17 +20,11 @@ end
 def print_header
   puts "The students of Villains Academy"
   puts "-----------"
-  puts "Name".ljust(20) + "Age".center(10) +
-       "City of Birth".center(25) + "Cohort".center(15)
 end
 
 def print(names)
-  index = 0
-  while true
-    break if index == names.size
-    puts "#{names[index][:name]}".ljust(20) + "#{names[index][:age]}".center(10) +
-         "#{names[index][:city_of_birth]}".center(25) + "(#{names[index][:cohort]} cohort)".center(15)
-    index += 1
+  names.each do |student|
+    puts "#{student[:name]} (#{student[:cohort]} cohort)"
   end
 end
 
