@@ -16,10 +16,10 @@ def print_menu
 end
 
 def selection_process(selection)
-  input_students if selection == "1"
-  show_students  if selection == "2"
-  save_students  if selection == "3"
-  load_students  if selection == "4"
+  return input_students if selection == "1"
+  return show_students  if selection == "2"
+  return save_students  if selection == "3"
+  return load_students  if selection == "4"
   exit if selection == "9"
   puts "I don't know what you mean, try again"
 end
@@ -41,6 +41,7 @@ def input_students
     # get another name from the user
     name = STDIN.gets.chomp
   end
+  feedback_message
 end
 
 def show_students
@@ -59,6 +60,7 @@ def save_students
     file.puts csv_line
   end
   file.close
+  feedback_message
 end
 
 def load_students(filename = "students.csv")
@@ -68,6 +70,7 @@ def load_students(filename = "students.csv")
     get_student(name, cohort.to_sym)
   end
   file.close
+  feedback_message
 end
 
 def try_load_students
@@ -80,6 +83,10 @@ def try_load_students
     puts "Sorry, #{filename} doesn't exist."
     exit # quit the program
   end
+end
+
+def feedback_message
+  puts "Your operation was successefully executed!\n\n"
 end
 
 def print_header
