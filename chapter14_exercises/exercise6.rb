@@ -60,14 +60,14 @@ end
 
 def save_students
   # open the file for writing
-  file = File.open(save_filename, "w")
-  # iterate over the array of students
-  @students.each do |student|
-    student_data = [student[:name], student[:cohort]]
-    csv_line = student_data.join(",")
-    file.puts csv_line
+  File.open(save_filename, "w") do |file|
+    # iterate over the array of students
+    @students.each do |student|
+      student_data = [student[:name], student[:cohort]]
+      csv_line = student_data.join(",")
+      file.puts csv_line
+    end
   end
-  file.close
 end
 
 def load_filename # choose filename to open
@@ -77,12 +77,12 @@ def load_filename # choose filename to open
 end
 
 def load_students(filename)
-  file = File.open(filename, "r")
-  file.readlines.each do |line|
-    name, cohort = line.chomp.split(',')
-    get_student(name, cohort.to_sym)
+  File.open(filename, "r") do |file|
+    file.readlines.each do |line|
+      name, cohort = line.chomp.split(',')
+      get_student(name, cohort.to_sym)
+    end
   end
-  file.close
   feedback_message
 end
 
