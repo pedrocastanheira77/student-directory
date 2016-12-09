@@ -3,7 +3,7 @@
 def interactive_menu
   loop do
     print_menu
-    process(STDIN.gets.chomp)
+    selection_process(STDIN.gets.chomp)
   end
 end
 
@@ -15,21 +15,13 @@ def print_menu
   puts "9. Exit" # 9 because we'll be adding more items
 end
 
-def process(selection)
-  case selection
-  when "1"
-    input_students
-  when "2"
-    show_students
-  when "3"
-    save_students
-  when "4"
-    load_students
-  when "9"
-    exit
-  else
-    puts "I don't know what you mean, try again"
-  end
+def selection_process(selection)
+  input_students if selection == "1"
+  show_students  if selection == "2"
+  save_students  if selection == "3"
+  load_students  if selection == "4"
+  exit if selection == "9"
+  puts "I don't know what you mean, try again"
 end
 
 def get_student(name, cohort = :november)
