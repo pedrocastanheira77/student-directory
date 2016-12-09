@@ -16,10 +16,10 @@ def print_menu
 end
 
 def selection_process(selection)
-  input_students if selection == "1"
-  show_students  if selection == "2"
-  save_students  if selection == "3"
-  load_students  if selection == "4"
+  return input_students if selection == "1"
+  return show_students  if selection == "2"
+  return save_students  if selection == "3"
+  return load_students  if selection == "4"
   exit if selection == "9"
   puts "I don't know what you mean, try again"
 end
